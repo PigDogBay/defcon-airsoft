@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="white">#fff</drawable>
+    <drawable name="grey">#888</drawable>
+    <drawable name="facebook_blue">#3b5998</drawable>
+    <drawable name="facebook_blue1">#8b9dc3</drawable>
+    <drawable name="facebook_blue2">#dfe3ee</drawable>
+    <drawable name="facebook_blue3">#f7f7f7</drawable>
+</resources>

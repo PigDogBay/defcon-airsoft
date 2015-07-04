@@ -1,8 +1,121 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <!-- Customize your theme here. -->
     </style>
+    <style name="StandardButton" parent="android:TextAppearance.DeviceDefault.Large">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/button_green_selector</item>
+    </style>
+    <style name="PickerButton" parent="android:TextAppearance.DeviceDefault.Large">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/button_blue_selector</item>
+    </style>
+    <style name="PickerChangeButton" parent="android:TextAppearance.DeviceDefault.Large">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/button_blue_selector</item>
+    </style>
+    <style name="PresetsButton" parent="android:TextAppearance.DeviceDefault.Medium">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:background">@drawable/facebook_button_selector</item>
+    </style>
 
+    <style name="StandardNumberPicker" parent="android:TextAppearance.DeviceDefault.Large">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+    <style name="SettingsText" parent="android:TextAppearance.DeviceDefault.Large">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+    <style name="FieldHeader" parent="android:TextAppearance.DeviceDefault.Large">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+    <style name="FieldValue" parent="android:TextAppearance.DeviceDefault.Large">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">2</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="ItemFieldValue" >
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="FieldEdit" parent="android:TextAppearance.DeviceDefault.Large">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+    <style name="FieldCheckbox" parent="android:TextAppearance.DeviceDefault.Large">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="StandardRadioButton" parent="@android:style/TextAppearance.Large">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:typeface">sans</item>
+    </style>
+    <style name="StandardRadioGroup" parent="@android:style/TextAppearance.Large">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    <style name="SettingNumberPicker" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:typeface">sans</item>
+    </style>
 </resources>
