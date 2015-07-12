@@ -21,4 +21,20 @@ public class WavDataTest extends InstrumentationTestCase
         assertEquals(643568,target.getDataSize());
         target.log("test");
     }
+
+    public void testConstructor1(){
+        short[] samples = new short[44100];
+        for (int i=0;i<samples.length;i++){
+            samples[i]=-20000;
+            if (i%2 == 0){
+                samples[i]=20000;
+            }
+        }
+        WavData target = new WavData(samples,44100);
+        assertEquals(44100,target.getRate());
+        int[] actual = target.getSamples();
+        assertEquals(samples.length,actual.length);
+        assertEquals(20000,actual[22000]);
+        assertEquals(-20000,actual[22001]);
+    }
 }

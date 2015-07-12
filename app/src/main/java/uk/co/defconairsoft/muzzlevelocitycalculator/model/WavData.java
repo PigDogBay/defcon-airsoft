@@ -152,6 +152,20 @@ public class WavData
 
     }
 
+    public WavData(short[] pcmData, int rate){
+        this.rate = rate;
+        this.RIFF="RIFF";
+        this.WAVE="WAVE";
+        this.fmt="fmt\0";
+        this.numberOfChannels = 1;
+        this.bitsPerSample = 16;
+        this.data="data";
+        this.samples = new int[pcmData.length];
+        for (int i=0;i<pcmData.length;i++){
+            samples[i]=(int)pcmData[i];
+        }
+    }
+
     public boolean isValid()
     {
         return "RIFF".equals(RIFF) && "WAVE".equals(WAVE) && fmt!=null && fmt.startsWith("fmt");
