@@ -32,7 +32,10 @@ public class Analysis
         DPoint max = DPoint.getMaxY(differentials);
         this.startTime = getTime(wavData, max);
         int endIndex = getFinalPeak(differentials);
-        this.endTime = getTime(wavData, differentials.get(endIndex));
+        this.endTime=startTime;
+        if (endIndex>0) {
+            this.endTime = getTime(wavData, differentials.get(endIndex));
+        }
     }
 
     private int getFinalPeak(List<DPoint> data)

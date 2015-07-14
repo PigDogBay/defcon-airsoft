@@ -32,7 +32,7 @@ public class AudioMonitor implements AudioRecord.OnRecordPositionUpdateListener 
                 SAMPLE_RATE,
                 AudioFormat.CHANNEL_IN_MONO,
                 AudioFormat.ENCODING_PCM_16BIT,
-                SAMPLES_PER_FRAME*BYTES_PER_SAMPLE);
+                SAMPLES_PER_FRAME*BYTES_PER_SAMPLE*4);
         audioRecord.setRecordPositionUpdateListener(this);
         audioRecord.setPositionNotificationPeriod(SAMPLES_PER_FRAME);
     }

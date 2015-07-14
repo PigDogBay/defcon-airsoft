@@ -124,13 +124,11 @@ public class Ballistics
         {
             low = high;
             high = high * 2;
-            Log.v("mpdb", String.format("High %f", high));
             d = calculateDistance(time, dragCoefficient, high);
 
         } while (d<distance);
         do
         {
-            Log.v("mpdb", String.format("Low: %f, High: %f", low, high));
             double mid = (low + high) / 2;
             d = calculateDistance(time, dragCoefficient, mid);
             if (d<distance)
@@ -155,7 +153,7 @@ public class Ballistics
     private double calculateFlightTime(double startTime, double endTime)
     {
         //30 came from testing
-        double timeInBarrel = getBarrelLength() / 30D;
+        double timeInBarrel = getBarrelLength() / 16D;
         return endTime - startTime - timeInBarrel - getDistance() / getSpeedOfSound();
     }
 

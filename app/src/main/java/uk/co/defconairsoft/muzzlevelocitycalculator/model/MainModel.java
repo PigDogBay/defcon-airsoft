@@ -1,40 +1,45 @@
 package uk.co.defconairsoft.muzzlevelocitycalculator.model;
 
-import java.util.Date;
+import android.util.Log;
 
 /**
  * Created by Mark on 04/07/2015.
  */
 public class MainModel
 {
-    private boolean isRecording=false;
     private String results="";
-    public boolean isRecording() {
-        return isRecording;
-    }
+    private AudioMonitor audioMonitor;
+    private Ballistics ballistics;
 
-    public void setRecording(boolean isRecording) {
-        this.isRecording = isRecording;
-    }
 
     public String getResults() {
         return results;
     }
-
-    public void toggleRecord(){
-        isRecording=!isRecording;
-        if (!isRecording)
-        {
-            Date date = new Date();
-            results = results+date.toString()+"\n";
-        }
+    public Ballistics getBallistics(){
+        return ballistics;
     }
 
-    public void playBack() {
+    public void setListener(LiveAnalysis.IAnalysisListener listener){
+        audioMonitor.getLiveAnalysis().setListener(listener);
+    }
+
+
+    public MainModel(){
+        audioMonitor = new AudioMonitor();
+        ballistics = new Ballistics();
+    }
+
+    public void start(){
+        audioMonitor.start();
 
     }
 
     public void stop() {
-
+        try {
+            audioMonitor.stop();
+            audioMonitor.release();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

@@ -1,5 +1,7 @@
 package uk.co.defconairsoft.muzzlevelocitycalculator.model;
 
+import android.util.Log;
+
 /**
  * Created by Mark on 12/07/2015.
  */
@@ -15,8 +17,8 @@ public class LiveAnalysis
         Processing
     }
 
-    private static final int NUMBER_OF_SAMPLES_TO_RECORD = 10;
-    private short threshold = 10000;
+    private static final int NUMBER_OF_SAMPLES_TO_RECORD = 6;
+    private short threshold = 5000;
     private IAnalysisListener listener;
     private State state;
     private short[] recordedSampleData;

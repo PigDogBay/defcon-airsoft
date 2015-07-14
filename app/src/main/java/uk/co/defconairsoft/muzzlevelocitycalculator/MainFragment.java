@@ -10,16 +10,16 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import uk.co.defconairsoft.muzzlevelocitycalculator.model.AudioMonitor;
+import uk.co.defconairsoft.muzzlevelocitycalculator.model.Ballistics;
+import uk.co.defconairsoft.muzzlevelocitycalculator.model.LiveAnalysis;
 import uk.co.defconairsoft.muzzlevelocitycalculator.model.MainModel;
 
 /**
  * Created by Mark on 04/07/2015.
  */
-public class MainFragment extends Fragment {
-
-    Button recordToggleBtn;
+public class MainFragment extends Fragment implements LiveAnalysis.IAnalysisListener {
     TextView resultsText;
-
     MainModel mainModel;
 
     public MainFragment(){
@@ -34,19 +34,6 @@ public class MainFragment extends Fragment {
     }
 
     private void wireUpControls(View view){
-        recordToggleBtn = (Button) view.findViewById(R.id.recordBtn);
-        recordToggleBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onRecord();
-            }
-        });
-        ((Button)view.findViewById(R.id.playBtn)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playBack();
-            }
-        });
         resultsText = (TextView)view.findViewById(R.id.resultsText);
     }
 
@@ -54,22 +41,31 @@ public class MainFragment extends Fragment {
     public void onResume() {
         super.onResume();
         this.mainModel = ((MainActivity)getActivity()).getMainModel();
-        modelToView();
+        this.mainModel.setListener(this);
+        this.mainModel.start();
     }
 
-    private void playBack() {
-        mainModel.playBack();
+    @Override
+    public void onPause() {
+        super.onPause();
+        this.mainModel.setListener(null);
+        this.mainModel.stop();
     }
 
-    private void onRecord() {
-        mainModel.toggleRecord();
-        modelToView();
+    int count =0;
+    @Override
+    public void onPelletFired(final double durationOfFlight) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                count++;
+                double speed = 0d;
+                if (durationOfFlight>0.05D) {
+                    speed = mainModel.getBallistics().calculateMuzzleVelocity(0D, durationOfFlight);
+                    speed = mainModel.getBallistics().convertToFeetPerSecond(speed);
+                }
+                resultsText.setText(String.format("%d: %.3f s / %.1f fps",count, durationOfFlight,speed));
+            }
+        });
     }
-
-    private void modelToView(){
-        resultsText.setText(mainModel.getResults());
-        String recordText = mainModel.isRecording() ? "STOP":"RECORD";
-        recordToggleBtn.setText(recordText);
-    }
-
 }
