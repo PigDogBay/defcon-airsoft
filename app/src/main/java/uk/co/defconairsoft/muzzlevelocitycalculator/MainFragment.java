@@ -42,14 +42,14 @@ public class MainFragment extends Fragment implements LiveAnalysis.IAnalysisList
         super.onResume();
         this.mainModel = ((MainActivity)getActivity()).getMainModel();
         this.mainModel.setListener(this);
-        this.mainModel.start();
+  //      this.mainModel.start();
     }
 
     @Override
     public void onPause() {
         super.onPause();
         this.mainModel.setListener(null);
-        this.mainModel.stop();
+    //    this.mainModel.stop();
     }
 
     int count =0;

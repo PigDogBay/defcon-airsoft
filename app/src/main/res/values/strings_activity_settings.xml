@@ -1,0 +1,29 @@
+<resources>
+    <string name="title_activity_settings">Settings</string>
+    <!-- Pellet settings -->
+    <string name="pref_header_pellet">Pellet</string>
+    <string name="pref_title_pellet_diameter">Pellet diameter</string>
+    <string-array name="pref_pellet_diameter_titles">
+        <item>6mm</item>
+        <item>8mm</item>
+    </string-array>
+    <string-array name="pref_pellet_diameter_values">
+        <item>6</item>
+        <item>8</item>
+    </string-array>
+    <string name="pref_title_pellet_mass">Pellet mass (grams)</string>
+    <string name="pref_default_pellet_mass">0.25</string>
+
+    <!-- Gun settings -->
+    <string name="pref_header_gun">Weapon</string>
+    <string name="pref_title_gun_barrel_length">Barrel length (mm)</string>
+    <string name="pref_default_gun_barrel_length">480</string>
+    <string name="pref_title_gun_speed_correction">Speed correction</string>
+    <string name="pref_default_gun_speed_correction">0</string>
+
+    <!-- Target settings -->
+    <string name="pref_header_target">Target</string>
+    <string name="pref_title_target_distance">Distance (m)</string>
+    <string name="pref_default_target_distance">10</string>
+
+</resources>
