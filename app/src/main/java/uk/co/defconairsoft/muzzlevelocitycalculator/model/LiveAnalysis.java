@@ -33,11 +33,11 @@ public class LiveAnalysis
         this.listener = listener;
     }
 
-    public short getThreshold() {
+    synchronized public short getThreshold() {
         return threshold;
     }
 
-    public void setThreshold(short threshold) {
+    synchronized public void setThreshold(short threshold) {
         this.threshold = threshold;
     }
     public LiveAnalysis(int sampleSize, int sampleRate){
@@ -91,11 +91,12 @@ public class LiveAnalysis
 
     private boolean hasCrossedThreshold(short[] samples){
         int count=0;
+        int thresholdLocal = getThreshold();
         //start halfway in,
         for (int i = samples.length/2; i< samples.length; i++)
         {
             short s = samples[i];
-            if (s>threshold){
+            if (s>thresholdLocal){
                 count++;
                 if (count>3)
                 {

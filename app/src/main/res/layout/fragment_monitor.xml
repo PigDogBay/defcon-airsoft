@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Threshold"
+        android:text="Sound Threshold"
         android:id="@+id/textView"
         android:textColor="@android:color/white"
         android:layout_marginLeft="5dp"

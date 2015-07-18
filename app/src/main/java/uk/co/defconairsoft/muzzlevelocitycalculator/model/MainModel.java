@@ -41,6 +41,12 @@ public class MainModel
     public double getTimeBetweenPeaks() {
         return timeBetweenPeaks;
     }
+    public void setThreshold(int threshold){
+        audioMonitor.getLiveAnalysis().setThreshold((short)threshold);
+    }
+    public int getThreshold(){
+        return (int)audioMonitor.getLiveAnalysis().getThreshold();
+    }
 
 
     public MainModel(){
