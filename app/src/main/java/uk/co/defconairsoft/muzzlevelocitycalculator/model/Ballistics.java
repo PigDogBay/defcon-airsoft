@@ -28,6 +28,7 @@ public class Ballistics
     private double mass = MASS;
     private double diameter = DIAMETER;
     private double barrelLength = BARREL_LENGTH;
+    private double correction = 0D;
 
     public double getBarrelLength() {
         return barrelLength;
@@ -77,6 +78,15 @@ public class Ballistics
         this.diameter = diameter;
     }
 
+
+    public double getCorrection() {
+        return correction;
+    }
+
+    public void setCorrection(double correction) {
+        this.correction = correction;
+    }
+
     public Ballistics(){
 
     }
@@ -103,6 +113,10 @@ public class Ballistics
     public double convertToFeetPerSecond(double metersPerSecond)
     {
         return metersPerSecond*METERS_TO_FEET;
+    }
+
+    public double applyCorrection(double raw){
+        return raw+correction;
     }
 
     /**
@@ -190,5 +204,4 @@ public class Ballistics
         double sqrt2 = Math.sqrt(2 * velocity / dragCoefficient);
         return Math.atan(sqrt1 * time) * sqrt2;
     }
-
 }

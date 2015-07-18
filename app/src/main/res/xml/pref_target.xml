@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <EditTextPreference
-        android:key="target_distance"
+        android:key="@string/pref_key_target_distance"
         android:title="@string/pref_title_target_distance"
         android:defaultValue="@string/pref_default_target_distance"
         android:selectAllOnFocus="true"

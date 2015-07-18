@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import uk.co.defconairsoft.muzzlevelocitycalculator.model.MainModel;
+import uk.co.defconairsoft.muzzlevelocitycalculator.model.Settings;
 
 
 public class MainActivity extends Activity {
@@ -63,8 +64,17 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Settings settings = SettingsActivity.getSettings(this);
+        mainModel.applySettings(settings);
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
         mainModel.stop();
+        SettingsActivity.storeThreshold(this,mainModel.getThreshold());
     }
+
 }

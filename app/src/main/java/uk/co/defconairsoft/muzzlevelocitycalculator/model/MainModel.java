@@ -78,11 +78,21 @@ public class MainModel
         if (timeBetweenPeaks> MIN_TIME) {
             speed = getBallistics().calculateMuzzleVelocity(0D, timeBetweenPeaks);
             speed = getBallistics().convertToFeetPerSecond(speed);
+            speed = getBallistics().applyCorrection(speed);
         }
 
         average = speed+previous[0]+previous[1]+previous[2];
         average = average/4;
 
+    }
+
+    public void applySettings(Settings settings){
+        setThreshold(settings.threshold);
+        ballistics.setBarrelLength(settings.barrelLength);
+        ballistics.setDiameter(settings.pelletDiameter);
+        ballistics.setMass(settings.pelletMass);
+        ballistics.setDistance(settings.targetDistance);
+        ballistics.setCorrection(settings.correction);
     }
 
 

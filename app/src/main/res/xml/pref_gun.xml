@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <EditTextPreference
-        android:key="gun_barrel_length"
+        android:key="@string/pref_key_gun_barrel_length"
         android:title="@string/pref_title_gun_barrel_length"
         android:defaultValue="@string/pref_default_gun_barrel_length"
         android:selectAllOnFocus="true"
@@ -9,7 +9,7 @@
         android:singleLine="true"
         android:maxLines="1" />
     <EditTextPreference
-        android:key="gun_correction"
+        android:key="@string/pref_key_gun_correction"
         android:title="@string/pref_title_gun_speed_correction"
         android:defaultValue="@string/pref_default_gun_speed_correction"
         android:selectAllOnFocus="true"

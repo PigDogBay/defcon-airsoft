@@ -1,24 +1,15 @@
 package uk.co.defconairsoft.muzzlevelocitycalculator;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.Configuration;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
-import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.preference.RingtonePreference;
-import android.text.TextUtils;
 
-
-import java.util.List;
+import uk.co.defconairsoft.muzzlevelocitycalculator.model.Settings;
+import uk.co.defconairsoft.muzzlevelocitycalculator.utils.PreferencesHelper;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -68,11 +59,11 @@ public class SettingsActivity extends PreferenceActivity {
         // Bind the summaries of EditText/List/Dialog/Ringtone preferences to
         // their values. When their values change, their summaries are updated
         // to reflect the new value, per the Android Design guidelines.
-        bindPreferenceSummaryToValue(findPreference("gun_correction"));
-        bindPreferenceSummaryToValue(findPreference("gun_barrel_length"));
-        bindPreferenceSummaryToValue(findPreference("pellet_diameter"));
-        bindPreferenceSummaryToValue(findPreference("pellet_mass"));
-        bindPreferenceSummaryToValue(findPreference("target_distance"));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_key_gun_correction)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_key_gun_barrel_length)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_key_pellet_diameter)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_key_pellet_mass)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_key_target_distance)));
 
     }
 
@@ -129,6 +120,32 @@ public class SettingsActivity extends PreferenceActivity {
                 PreferenceManager
                         .getDefaultSharedPreferences(preference.getContext())
                         .getString(preference.getKey(), ""));
+    }
+
+    public static Settings getSettings(Context context){
+        Settings settings = new Settings();
+        PreferencesHelper helper = new PreferencesHelper(context);
+        double diameter = helper.getDouble(R.string.pref_key_pellet_diameter, 6D);
+        diameter = diameter/1000D;
+        double mass = helper.getDouble(R.string.pref_key_pellet_mass,0.25D);
+        mass = mass/1000D;
+        double distance = helper.getDouble(R.string.pref_key_target_distance,10D);
+        double barrel = helper.getDouble(R.string.pref_key_gun_barrel_length,480D);
+        barrel = barrel/1000D;
+        double correction = helper.getDouble(R.string.pref_key_gun_correction,0D);
+        int threshold = helper.getInt(R.string.pref_key_threshold,5000);
+        settings.pelletDiameter = diameter;
+        settings.pelletMass = mass;
+        settings.barrelLength = barrel;
+        settings.correction = correction;
+        settings.targetDistance = distance;
+        settings.threshold = threshold;
+        return settings;
+    }
+
+    public static void storeThreshold(Context context, int threshold){
+        PreferencesHelper helper = new PreferencesHelper(context);
+        helper.setInt(R.string.pref_key_threshold,threshold);
     }
 
 }
