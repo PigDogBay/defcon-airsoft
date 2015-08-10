@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="300.0 fps"
+        android:text="---.- fps"
         android:id="@+id/monitorSpeed"
         android:textColor="@android:color/white"
         android:layout_marginTop="20dp"

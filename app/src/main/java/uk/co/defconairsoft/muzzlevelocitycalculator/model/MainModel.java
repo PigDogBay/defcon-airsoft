@@ -9,11 +9,13 @@ public class MainModel
     private AudioMonitor audioMonitor;
     private Ballistics ballistics;
     private int count;
+    private int miss;
     private double speed;
     private double average;
     private double timeBetweenPeaks;
     private double[] previous = new double[3];
 
+    public int getMiss(){return miss;}
     public int getCount() {
         return count;
     }
@@ -69,17 +71,21 @@ public class MainModel
     }
 
     public void calculateSpeed(double timeBetweenPeaks){
+
         this.timeBetweenPeaks = timeBetweenPeaks;
+        if (timeBetweenPeaks< MIN_TIME) {
+            //a miss
+            miss++;
+            return;
+        }
         count++;
         previous[2]=previous[1];
         previous[1]=previous[0];
         previous[0]=speed;
         speed = 0d;
-        if (timeBetweenPeaks> MIN_TIME) {
-            speed = getBallistics().calculateMuzzleVelocity(0D, timeBetweenPeaks);
-            speed = getBallistics().convertToFeetPerSecond(speed);
-            speed = getBallistics().applyCorrection(speed);
-        }
+        speed = getBallistics().calculateMuzzleVelocity(0D, timeBetweenPeaks);
+        speed = getBallistics().convertToFeetPerSecond(speed);
+        speed = getBallistics().applyCorrection(speed);
 
         average = speed+previous[0]+previous[1]+previous[2];
         average = average/4;

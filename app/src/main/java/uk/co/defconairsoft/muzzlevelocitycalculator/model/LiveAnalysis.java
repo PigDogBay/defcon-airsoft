@@ -17,7 +17,7 @@ public class LiveAnalysis
         Processing
     }
 
-    private static final int NUMBER_OF_SAMPLES_TO_RECORD = 6;
+    private static final int NUMBER_OF_SAMPLES_TO_RECORD = 10;
     private short threshold = 5000;
     private IAnalysisListener listener;
     private State state;

@@ -57,6 +57,7 @@ public class MainFragment extends Fragment implements LiveAnalysis.IAnalysisList
         speedText.setText(String.format("%.1f fps", mainModel.getSpeed()));
         StringBuilder sbuff = new StringBuilder();
         sbuff.append(String.format("Count %d\n",mainModel.getCount()));
+        sbuff.append(String.format("Miss %d\n",mainModel.getMiss()));
         sbuff.append(String.format("Measured Time %.3f s\n",mainModel.getTimeBetweenPeaks()));
         sbuff.append(String.format("Previous 1. %.1f fps\n",mainModel.getPrevious()[0]));
         sbuff.append(String.format("Previous 2. %.1f fps\n",mainModel.getPrevious()[1]));
