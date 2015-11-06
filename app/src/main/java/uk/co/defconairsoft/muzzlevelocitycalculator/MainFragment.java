@@ -40,10 +40,15 @@ public class MainFragment extends Fragment implements LiveAnalysis.IAnalysisList
     @Override
     public void onResume() {
         super.onResume();
-        this.mainModel = ((MainActivity)getActivity()).getMainModel();
-        this.mainModel.setListener(this);
-        seekBar.setProgress(mainModel.getThreshold());
-        this.mainModel.start();
+        try {
+            this.mainModel = ((MainActivity)getActivity()).getMainModel();
+            this.mainModel.setListener(this);
+            seekBar.setProgress(mainModel.getThreshold());
+            this.mainModel.start();
+        }catch (Exception e){
+            speedText.setText("Error");
+            statsText.setText(("Please restart the app"));
+        }
     }
 
     @Override
@@ -72,8 +77,10 @@ public class MainFragment extends Fragment implements LiveAnalysis.IAnalysisList
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mainModel.calculateSpeed(durationOfFlight);
-                modelToView();
+                try {
+                    mainModel.calculateSpeed(durationOfFlight);
+                    modelToView();
+                }catch(Exception e){}
             }
         });
     }
@@ -81,7 +88,9 @@ public class MainFragment extends Fragment implements LiveAnalysis.IAnalysisList
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         if (fromUser){
-            mainModel.setThreshold(progress);
+            try {
+                mainModel.setThreshold(progress);
+            }catch(Exception e){}
         }
     }
 

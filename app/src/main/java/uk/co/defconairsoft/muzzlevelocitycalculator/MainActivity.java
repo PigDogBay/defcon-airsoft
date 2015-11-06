@@ -24,7 +24,7 @@ import uk.co.defconairsoft.muzzlevelocitycalculator.model.Settings;
 
 public class MainActivity extends Activity {
 
-    private MainModel mainModel;
+    private MainModel mainModel=null;
 
     public MainModel getMainModel()
     {
@@ -47,8 +47,9 @@ public class MainActivity extends Activity {
                          bannerClicked();
                      }
                  });
-
-        mainModel = new MainModel();
+        if (mainModel==null) {
+            mainModel = new MainModel();
+        }
     }
     public static void ShowWebPage(Activity currentActivity, String url)
     {

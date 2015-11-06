@@ -14,6 +14,7 @@ public class MainModel
     private double average;
     private double timeBetweenPeaks;
     private double[] previous = new double[3];
+    private boolean isStarted = false;
 
     public int getMiss(){return miss;}
     public int getCount() {
@@ -57,12 +58,16 @@ public class MainModel
     }
 
     public void start(){
-        audioMonitor.start();
+        if (!isStarted) {
+            audioMonitor.start();
+            isStarted = true;
+        }
 
     }
 
     public void stop() {
         try {
+            isStarted=false;
             audioMonitor.stop();
             audioMonitor.release();
         }catch(Exception e){
