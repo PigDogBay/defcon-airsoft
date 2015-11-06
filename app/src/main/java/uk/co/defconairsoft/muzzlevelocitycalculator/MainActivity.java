@@ -8,10 +8,15 @@
 package uk.co.defconairsoft.muzzlevelocitycalculator;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import uk.co.defconairsoft.muzzlevelocitycalculator.model.MainModel;
 import uk.co.defconairsoft.muzzlevelocitycalculator.model.Settings;
@@ -35,7 +40,34 @@ public class MainActivity extends Activity {
                     .add(R.id.container, new MainFragment())
                     .commit();
         }
+        ((ImageView)findViewById(R.id.imageView)).setOnClickListener(
+                new View.OnClickListener() {
+                     @Override
+                     public void onClick(View v) {
+                         bannerClicked();
+                     }
+                 });
+
         mainModel = new MainModel();
+    }
+    public static void ShowWebPage(Activity currentActivity, String url)
+    {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+        intent.setData(Uri.parse(url));
+        currentActivity.startActivity(intent);
+    }
+    private void bannerClicked() {
+        try
+        {
+            ShowWebPage(this, "http://www.defconairsoft.co.uk");
+        }
+        catch (ActivityNotFoundException e)
+        {
+            Toast.makeText(this, "no browser", Toast.LENGTH_LONG)
+                    .show();
+        }
     }
 
 
