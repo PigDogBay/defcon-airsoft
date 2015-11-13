@@ -27,14 +27,6 @@ public class AudioMonitor implements AudioRecord.OnRecordPositionUpdateListener 
     {
         buffer = new short[SAMPLES_PER_FRAME];
         liveAnalysis = new LiveAnalysis(SAMPLES_PER_FRAME,SAMPLE_RATE);
-        audioRecord = new AudioRecord(
-                MediaRecorder.AudioSource.MIC,
-                SAMPLE_RATE,
-                AudioFormat.CHANNEL_IN_MONO,
-                AudioFormat.ENCODING_PCM_16BIT,
-                SAMPLES_PER_FRAME*BYTES_PER_SAMPLE*4);
-        audioRecord.setRecordPositionUpdateListener(this);
-        audioRecord.setPositionNotificationPeriod(SAMPLES_PER_FRAME);
     }
 
     @Override
@@ -44,19 +36,27 @@ public class AudioMonitor implements AudioRecord.OnRecordPositionUpdateListener 
 
     @Override
     public void onPeriodicNotification(AudioRecord recorder) {
-        recorder.read(buffer,0,buffer.length);
+        recorder.read(buffer, 0, buffer.length);
         liveAnalysis.update(buffer);
     }
 
     public void start(){
+        audioRecord = new AudioRecord(
+                MediaRecorder.AudioSource.MIC,
+                SAMPLE_RATE,
+                AudioFormat.CHANNEL_IN_MONO,
+                AudioFormat.ENCODING_PCM_16BIT,
+                SAMPLES_PER_FRAME*BYTES_PER_SAMPLE*4);
+        audioRecord.setRecordPositionUpdateListener(this);
+        audioRecord.setPositionNotificationPeriod(SAMPLES_PER_FRAME);
         audioRecord.startRecording();
-
     }
     public void stop(){
-        audioRecord.stop();
-    }
-    public void release(){
         audioRecord.setRecordPositionUpdateListener(null);
+        if (AudioRecord.STATE_UNINITIALIZED!=audioRecord.getState()) {
+            audioRecord.stop();
+        }
         audioRecord.release();
+        audioRecord=null;
     }
 }

@@ -69,7 +69,6 @@ public class MainModel
         try {
             isStarted=false;
             audioMonitor.stop();
-            audioMonitor.release();
         }catch(Exception e){
             e.printStackTrace();
         }
