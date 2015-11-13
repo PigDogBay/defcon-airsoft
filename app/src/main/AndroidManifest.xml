@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="uk.co.defconairsoft.muzzlevelocitycalculator"
-    android:versionCode="10100"
-    android:versionName="1.01.00"
+    android:versionCode="10200"
+    android:versionName="1.02.00"
     android:installLocation="auto"
     >
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="21" />

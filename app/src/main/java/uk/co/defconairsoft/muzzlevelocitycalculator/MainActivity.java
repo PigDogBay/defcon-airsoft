@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -40,37 +42,14 @@ public class MainActivity extends Activity {
                     .add(R.id.container, new MainFragment())
                     .commit();
         }
-        ((ImageView)findViewById(R.id.imageView)).setOnClickListener(
-                new View.OnClickListener() {
-                     @Override
-                     public void onClick(View v) {
-                         bannerClicked();
-                     }
-                 });
         if (mainModel==null) {
             mainModel = new MainModel();
         }
+        WebView webView = (WebView)findViewById(R.id.webView);
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webView.loadUrl("http://www.defconairsoft.co.uk/AppBanner.html");
     }
-    public static void ShowWebPage(Activity currentActivity, String url)
-    {
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.addCategory(Intent.CATEGORY_BROWSABLE);
-        intent.setData(Uri.parse(url));
-        currentActivity.startActivity(intent);
-    }
-    private void bannerClicked() {
-        try
-        {
-            ShowWebPage(this, "http://www.defconairsoft.co.uk");
-        }
-        catch (ActivityNotFoundException e)
-        {
-            Toast.makeText(this, "no browser", Toast.LENGTH_LONG)
-                    .show();
-        }
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
