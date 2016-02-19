@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="uk.co.defconairsoft.muzzlevelocitycalculator"
-    android:versionCode="10200"
-    android:versionName="1.02.00"
+    android:versionCode="10300"
+    android:versionName="1.03.00"
     android:installLocation="auto"
     >
 

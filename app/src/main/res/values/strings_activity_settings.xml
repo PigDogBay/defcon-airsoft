@@ -25,7 +25,7 @@
     <string name="pref_default_gun_barrel_length">480</string>
     <string name="pref_key_gun_correction">gun_correction</string>
     <string name="pref_title_gun_speed_correction">Speed correction</string>
-    <string name="pref_default_gun_speed_correction">0</string>
+    <string name="pref_default_gun_speed_correction">20</string>
 
     <!-- Target settings -->
     <string name="pref_header_target">Target</string>

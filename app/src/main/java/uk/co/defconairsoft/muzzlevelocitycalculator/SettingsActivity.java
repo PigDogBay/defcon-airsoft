@@ -132,7 +132,7 @@ public class SettingsActivity extends PreferenceActivity {
         double distance = helper.getDouble(R.string.pref_key_target_distance,10D);
         double barrel = helper.getDouble(R.string.pref_key_gun_barrel_length,480D);
         barrel = barrel/1000D;
-        double correction = helper.getDouble(R.string.pref_key_gun_correction,0D);
+        double correction = helper.getDouble(R.string.pref_key_gun_correction,20D);
         int threshold = helper.getInt(R.string.pref_key_threshold,5000);
         settings.pelletDiameter = diameter;
         settings.pelletMass = mass;
