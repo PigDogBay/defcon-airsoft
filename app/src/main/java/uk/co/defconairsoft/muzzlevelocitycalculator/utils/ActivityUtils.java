@@ -125,7 +125,7 @@ public final class ActivityUtils
     public static void setBackground(Activity activity, int viewID, int backgroundID)
     {
         Drawable background = activity.getResources().getDrawable(backgroundID);
-        View view = (View)activity.findViewById(viewID);
+        View view = activity.findViewById(viewID);
         int sdk = android.os.Build.VERSION.SDK_INT;
         if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN)
         {
@@ -145,12 +145,7 @@ public final class ActivityUtils
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton("OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-                                dialog.dismiss();
-                            }
-                        }).show();
+                        (dialog, which) -> dialog.dismiss()).show();
 
     }
 
@@ -162,7 +157,7 @@ public final class ActivityUtils
                 imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
             }
         }
-        catch (Exception e) {
+        catch (Exception ignored) {
         }
     }
     public static void hideKeyboard(Activity activity, IBinder token)
@@ -173,7 +168,7 @@ public final class ActivityUtils
                 imm.hideSoftInputFromWindow(token, 0);
             }
         }
-        catch (Exception e) {
+        catch (Exception ignored) {
         }
     }
 

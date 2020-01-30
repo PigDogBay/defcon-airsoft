@@ -31,9 +31,9 @@ public class MainFragment extends Fragment implements LiveAnalysis.IAnalysisList
     }
 
     private void wireUpControls(View view){
-        speedText = (TextView)view.findViewById(R.id.monitorSpeed);
-        statsText = (TextView)view.findViewById(R.id.monitorStats);
-        seekBar = (SeekBar)view.findViewById(R.id.monitorThreshold);
+        speedText = view.findViewById(R.id.monitorSpeed);
+        statsText = view.findViewById(R.id.monitorStats);
+        seekBar = view.findViewById(R.id.monitorThreshold);
         seekBar.setOnSeekBarChangeListener(this);
     }
 
@@ -47,7 +47,7 @@ public class MainFragment extends Fragment implements LiveAnalysis.IAnalysisList
             this.mainModel.start();
         }catch (Exception e){
             speedText.setText("Error");
-            statsText.setText(("Please restart the app"));
+            statsText.setText("Please restart the app");
         }
     }
 
@@ -80,7 +80,7 @@ public class MainFragment extends Fragment implements LiveAnalysis.IAnalysisList
                 try {
                     mainModel.calculateSpeed(durationOfFlight);
                     modelToView();
-                }catch(Exception e){}
+                }catch(Exception ignored){}
             }
         });
     }
@@ -90,7 +90,7 @@ public class MainFragment extends Fragment implements LiveAnalysis.IAnalysisList
         if (fromUser){
             try {
                 mainModel.setThreshold(progress);
-            }catch(Exception e){}
+            }catch(Exception ignored){}
         }
     }
 

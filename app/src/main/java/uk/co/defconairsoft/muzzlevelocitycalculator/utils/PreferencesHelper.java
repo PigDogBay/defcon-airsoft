@@ -11,8 +11,8 @@ import android.preference.PreferenceManager;
  */
 public class PreferencesHelper {
 
-    SharedPreferences _SharedPreferences;
-    Context _Context;
+    private SharedPreferences _SharedPreferences;
+    private Context _Context;
 
     public PreferencesHelper(Context context) {
         _SharedPreferences = PreferenceManager
@@ -29,7 +29,7 @@ public class PreferencesHelper {
         String key = _Context.getString(id);
         SharedPreferences.Editor editor = _SharedPreferences.edit();
         editor.putBoolean(key, flag);
-        editor.commit();
+        editor.apply();
     }
 
     public long getLong(int id, long defaultValue) {
@@ -38,7 +38,7 @@ public class PreferencesHelper {
         try {
             String stringValue = _SharedPreferences.getString(key, Long.toString(defaultValue));
             value = Long.parseLong(stringValue);
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
         }
         return value;
     }
@@ -47,7 +47,7 @@ public class PreferencesHelper {
         String key = _Context.getString(id);
         SharedPreferences.Editor editor = _SharedPreferences.edit();
         editor.putString(key, Long.toString(value));
-        editor.commit();
+        editor.apply();
     }
 
     public int getInt(int id, int defaultValue) {
@@ -56,7 +56,7 @@ public class PreferencesHelper {
         try {
             String stringValue = _SharedPreferences.getString(key, Integer.toString(defaultValue));
             intValue = Integer.parseInt(stringValue);
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
         }
         return intValue;
     }
@@ -65,7 +65,7 @@ public class PreferencesHelper {
         String key = _Context.getString(id);
         SharedPreferences.Editor editor = _SharedPreferences.edit();
         editor.putString(key, Integer.toString(value));
-        editor.commit();
+        editor.apply();
     }
 
     public double getDouble(int id, double defaultValue) {
@@ -74,7 +74,7 @@ public class PreferencesHelper {
         try {
             String stringValue = _SharedPreferences.getString(key, Double.toString(defaultValue));
             value = Double.parseDouble(stringValue);
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
         }
         return value;
     }
@@ -83,7 +83,7 @@ public class PreferencesHelper {
         String key = _Context.getString(id);
         SharedPreferences.Editor editor = _SharedPreferences.edit();
         editor.putString(key, Double.toString(value));
-        editor.commit();
+        editor.apply();
     }
 
     public String getString(int id, String defaultValue) {
@@ -95,6 +95,6 @@ public class PreferencesHelper {
         String key = _Context.getString(id);
         SharedPreferences.Editor editor = _SharedPreferences.edit();
         editor.putString(key, value);
-        editor.commit();
+        editor.apply();
     }
 }

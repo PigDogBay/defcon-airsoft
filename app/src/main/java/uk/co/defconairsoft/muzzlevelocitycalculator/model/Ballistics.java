@@ -1,4 +1,4 @@
-/**
+/*
  * MPD Bailey Technology
  * Copyright 2015
  *
@@ -6,8 +6,6 @@
  */
 
 package uk.co.defconairsoft.muzzlevelocitycalculator.model;
-
-import android.util.Log;
 
 /**
  * Created by Mark on 01/07/2015.

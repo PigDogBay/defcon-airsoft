@@ -1,14 +1,12 @@
 package uk.co.defconairsoft.muzzlevelocitycalculator.model;
 
-import android.util.Log;
-
-/**
+/*
  * Created by Mark on 12/07/2015.
  */
 public class LiveAnalysis
 {
     public interface IAnalysisListener{
-        public void onPelletFired(double durationOfFlight);
+        void onPelletFired(double durationOfFlight);
     }
 
     private enum State{
@@ -79,12 +77,9 @@ public class LiveAnalysis
     private void startProcessingThread()
     {
         state = State.Processing;
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                LiveAnalysis.this.onPelletFiredEvent();
-                state = State.Listening;
-            }
+        Thread t = new Thread(() -> {
+            LiveAnalysis.this.onPelletFiredEvent();
+            state = State.Listening;
         });
         t.start();
     }

@@ -1,4 +1,4 @@
-/**
+/*
  * MPD Bailey Technology
  * Copyright 2015
  *
@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
         if (mainModel==null) {
             mainModel = new MainModel();
         }
-        WebView webView = (WebView)findViewById(R.id.webView);
+        WebView webView = findViewById(R.id.webView);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webView.loadUrl("http://www.defconairsoft.co.uk/AppBanner.html");
